@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ETP Nyarurema - Technical & Vocational Excellence</title>
+  <meta name="description" content="ETP Nyarurema – Empowering youth through quality TVET education in Software Development, Automobile Technology, Building Construction, and Accounting in Nyagatare, Rwanda."/>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  
+  <style>
+    :root {
+      --primary: #0066cc;
+      --secondary: #ffcc00;
+      --accent: #009933;
+      --dark: #1a1a1a;
+      --light: #f8f9fa;
+      --gray: #6c757d;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.7;
+      color: var(--dark);
+      background: var(--light);
+    }
+    header {
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('etp/admin.png');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: white;
+      position: relative;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 5%;
+      background: rgba(0,0,0,0.5);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      transition: background 0.4s;
+    }
+    nav.scrolled {
+      background: rgba(0,102,204,0.95);
+    }
+    .logo {
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: var(--secondary);
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 2.5rem;
+    }
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover {
+      color: var(--secondary);
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 5%;
+    }
+    .hero-content h1 {
+      font-size: 4rem;
+      margin-bottom: 1.4rem;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+    }
+    .hero-content p {
+      font-size: 1.5rem;
+      max-width: 800px;
+      margin: 0 auto 2.5rem;
+    }
+    .btn {
+      display: inline-block;
+      background: var(--secondary);
+      color: var(--dark);
+      padding: 1rem 2.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: all 0.3s;
+    }
+    .btn:hover {
+      background: #e6b800;
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    section {
+      padding: 7rem 5% 5rem;
+    }
+    h2 {
+      text-align: center;
+      font-size: 2.8rem;
+      margin-bottom: 1.8rem;
+      color: var(--primary);
+    }
+    .about, .school-life {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 10px 35px rgba(0,0,0,0.1);
+      padding: 3.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .about img {
+      width: 100%;
+      max-height: 420px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 2.5rem;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+    }
+
+    .activity-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.2rem;
+      margin: 2.5rem 0;
+    }
+    .activity-card {
+      background: #f9fbfd;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+      transition: all 0.35s;
+    }
+    .activity-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+    }
+    .activity-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .activity-info {
+      padding: 1.4rem;
+      text-align: center;
+    }
+    .activity-info h4 {
+      color: var(--primary);
+      margin-bottom: 0.7rem;
+      font-size: 1.25rem;
+    }
+    .activity-info p {
+      font-size: 0.97rem;
+      color: #555;
+    }
+
+    .register-form {
+      max-width: 720px;
+      margin: 3rem auto;
+      background: white;
+      padding: 3.5rem;
+      border-radius: 16px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+    }
+    .form-group {
+      margin-bottom: 1.8rem;
+    }
+    label {
+      display: block;
+      margin-bottom: 0.7rem;
+      font-weight: 500;
+      color: #333;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: border 0.3s;
+    }
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--primary);
+      outline: none;
+    }
+
+    footer {
+      background: var(--dark);
+      color: white;
+      text-align: center;
+      padding: 4rem 5% 2rem;
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      margin: 1.8rem 0;
+    }
+    .footer-links a {
+      color: #ddd;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .footer-links a:hover {
+      color: var(--secondary);
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; } /* You can add hamburger menu later */
+      .hero-content h1 { font-size: 2.8rem; }
+      .hero-content p { font-size: 1.2rem; }
+      section { padding: 5rem 6%; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="navbar">
+    <div class="logo">ETP NYARUREMA</div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#school-life">School Life</a></li>
+      <li><a href="#about">About Us</a></li>
+      <li><a href="#trades">Trades</a></li>
+      <li><a href="#register">Register</a></li>
+    </ul>
+  </nav>
+
+  <header id="home">
+    <div class="hero">
+      <div class="hero-content">
+        <h1>ETP Nyarurema</h1>
+        <p>Your better skills, our pleasure.<br>We really intend to provide better knowledge and skills to various people.</p>
+        <a href="#register" class="btn">Apply Now</a>
+      </div>
+    </div>
+  </header>
+
+  <section id="school-life" class="school-life">
+    <h2>School Life at ETP Nyarurema</h2>
+    <div class="about">
+      <p>At ETP Nyarurema, students experience a vibrant, hands-on learning environment focused on practical skills and real-world preparation. Our TVET programs combine theory with extensive workshop practice, industry attachments, and life skills training.</p>
+      
+      <h3 style="text-align:center; margin:3rem 0 2rem; color:var(--primary);">Key Aspects of School Life</h3>
+      
+      <div class="activity-grid">
+        <div class="activity-card">
+          <img src="etp/c.lab.PNG" 
+               alt="Modern computer lab and workshops">
+          <div class="activity-info">
+            <h4>Modern Workshops & Computer Labs</h4>
+            <p>Practical training in well-equipped digital and technical facilities.</p>
+          </div>
+        </div>
+
+        <div class="activity-card">
+          <img src="etp/worksh.PNG" 
+               alt="Community outreach Rwanda students">
+          <div class="activity-info">
+            <h4>Community Outreach Projects</h4>
+            <p>Students contribute to local development and service initiatives.</p>
+          </div>
+        </div>
+
+        <div class="activity-card">
+          <img src="etp/life.png" 
+               alt="Students in sports and youth activities Rwanda">
+          <div class="activity-info">
+            <h4>Sports, Clubs & Youth Empowerment</h4>
+            <p>Participation in sports, leadership clubs, and personal development programs.</p>
+          </div>
+        </div>
+
+        <div class="activity-card">
+          <img src="etp/visitors.png" 
+               alt="Faith-based moral education session">
+          <div class="activity-info">
+            <h4>Spiritual & Moral Formation</h4>
+            <p>Values education and spiritual guidance as part of our faith-based mission.</p>
+          </div>
+        </div>
+      </div>
+
+      <p style="margin-top:2.5rem; text-align:center; font-size:1.1rem;">
+        Join a community that nurtures talent, character, and purpose for a brighter future.
+      </p>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2>About Us</h2>
+    <div class="about">
+      <img src="etp/admin.png" alt="ETP Nyarurema Administration / Leadership">
+      
+      <p>École Technique Paroissiale de Nyarurema (ETP Nyarurema) is a public TVET school located in Nyagatare District, Eastern Province, Rwanda.</p>
+      <p>We are committed to empowering youth through quality technical and vocational education, preparing them for employment, entrepreneurship, and self-reliance.</p>
+      <p>Our vision aligns with Rwanda’s National Strategy for Transformation — building competent, skilled citizens ready for the labor market and innovation.</p>
+      <p>As a faith-based institution under the Catholic parish of Nyarurema, we emphasize values of integrity, hard work, and service to community.</p>
+    </div>
+  </section>
+
+  <section id="trades" class="school-life">
+    <h2>Trades at ETP Nyarurema</h2>
+    <div class="about">
+      <p>Our TVET programs are designed to provide practical, industry-relevant skills in high-demand trades.</p>
+      
+      <h3 style="margin: 2.5rem 0 1.5rem; text-align: center; color: var(--primary);">Our Main Trades</h3>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem;">
+        
+        <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 20px rgba(0,0,0,0.1);">
+          <img src="etp/c.lab.PNG" alt="Software Development" style="width:100%; height:200px; object-fit:cover;">
+          <div style="padding:1.5rem; text-align:center;">
+            <h4 style="color:var(--primary); margin-bottom:0.8rem;">Software Development (SOD)</h4>
+            <p>Programming, web/mobile development, databases, and software engineering skills for the digital economy.</p>
+          </div>
+        </div>
+
+        <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 20px rgba(0,0,0,0.1);">
+          <img src="etp/etp.png" alt="Automobile Technology" style="width:100%; height:200px; object-fit:cover;">
+          <div style="padding:1.5rem; text-align:center;">
+            <h4 style="color:var(--primary); margin-bottom:0.8rem;">Automobile Technology (AUT)</h4>
+            <p>Vehicle diagnostics, repair, maintenance, and modern automotive systems training.</p>
+          </div>
+        </div>
+
+        <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 20px rgba(0,0,0,0.1);">
+          <img src="etp/worksh.PNG" alt="Building and Construction" style="width:100%; height:200px; object-fit:cover;">
+          <div style="padding:1.5rem; text-align:center;">
+            <h4 style="color:var(--primary); margin-bottom:0.8rem;">Building & Construction (BDC)</h4>
+            <p>Masonry, carpentry, plumbing, electrical installation, and sustainable construction practices.</p>
+          </div>
+        </div>
+
+        <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 20px rgba(0,0,0,0.1);">
+          <img src="etp/life.png" alt="Accounting" style="width:100%; height:200px; object-fit:cover;">
+          <div style="padding:1.5rem; text-align:center;">
+            <h4 style="color:var(--primary); margin-bottom:0.8rem;">Accounting (ACC)</h4>
+            <p>Financial accounting, bookkeeping, taxation, auditing, and business finance preparation.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="register">
+    <h2>Register / Apply</h2>
+  <div class="about" style="max-width: 800px; margin: 0 auto 3rem; font-size: 1.05rem; text-align: center; background: #fff3e0; padding: 1.5rem; border-radius: 12px;">
+    <p><strong>Important Admission Notes (TVET Levels):</strong></p>
+    <ul style="text-align: left; list-style: disc; padding-left: 2rem; margin: 1rem auto; max-width: 700px;">
+      <li><strong>Level 3 (L3) entry</strong>: For students who have completed <strong>S3 (Senior 3 / O-Level)</strong>. This is the main entry point after Lower Secondary.</li>
+      <li><strong>Level 4 / Level 5</strong>: Requires completion of previous TVET level (e.g., L3 for L4, L4 for L5) or equivalent qualifications.</li>
+      <li>Send your report cards/transcripts from lower levels (S3/S4 results, previous certificates) to support your application.</li>
+      <li>After submission, email scanned copies of your report cards/certificates to <a href="mailto:nightnarsi@gmail.com" style="color: var(--primary);">nightnarsi@gmail.com</a> with your full name and preferred trade.</li>
+    </ul>
+  </div>
+
+  <form class="register-form" action="https://formspree.io/f/xykdrdyz" method="POST">
+    <div class="form-group">
+      <label for="name">Full Name *</label>
+      <input type="text" id="name" name="name" required placeholder="Your full name"/>
+    </div>
+    <div class="form-group">
+      <label for="email">Email *</label>
+      <input type="email" id="email" name="email" required placeholder="your.email@example.com"/>
+    </div>
+    <div class="form-group">
+      <label for="phone">Phone Number *</label>
+      <input type="tel" id="phone" name="phone" required placeholder="078XXXXXXX"/>
+    </div>
+    <div class="form-group">
+      <label for="trade">Preferred Trade *</label>
+      <select id="trade" name="trade" required>
+        <option value="">Select Trade</option>
+        <option value="Software Development">Software Development (SOD)</option>
+        <option value="Automobile Technology">Automobile Technology (AUT)</option>
+        <option value="Building Construction">Building & Construction (BDC)</option>
+        <option value="Accounting">Accounting (ACC)</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="level">Desired Entry Level *</label>
+      <select id="level" name="level" required>
+        <option value="">Select Level</option>
+        <option value="Level 3 (after S3)">Level 3 (L3 - after Senior 3 / O-Level)</option>
+        <option value="Level 4">Level 4 (requires previous TVET Level 3 or equivalent)</option>
+        <option value="Level 5">Level 5 (requires previous TVET Level 4 or equivalent)</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="previous_education">Previous Education / Last Completed Level *</label>
+      <input type="text" id="previous_education" name="previous_education" required placeholder="e.g., Completed S3 (Senior 3), or TVET Level 3, etc."/>
+    </div>
+    <div class="form-group">
+      <label for="message">Message / Additional Info</label>
+      <textarea id="message" name="message" rows="5" placeholder="Any questions, or note if you will email report cards separately..."></textarea>
+    </div>
+
+    <!-- Honeypot for spam -->
+    <input type="text" name="_gotcha" style="display:none" />
+    <!-- Custom email subject -->
+    <input type="hidden" name="_subject" value="New Application - ETP Nyarurema - {{trade}} - {{level}}" />
+
+    <button type="submit" class="btn" style="width:100%; padding:1.2rem; font-size:1.15rem;">Submit Application</button>
+  </form>
+
+  <p style="text-align:center; margin-top:2rem; font-size:0.95rem; color:#555;">
+    Note:  Please email scanned copies of previous education to <strong>nightnarsi@gmail.com</strong> after submitting, including your name and trade/level.
+  </p>
+</section>
+  </section>
+
+  <footer>
+    <p>© 2026 ETP Nyarurema • Nyagatare District, Eastern Province, Rwanda</p>
+    <div class="footer-links">
+      <a href="#">Contact Us</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Use</a>
+    </div>
+    <p style="margin-top:1.8rem; font-size:1rem; opacity:0.85;">
+      Empowering Rwanda's Youth through Skills and Knowledge
+    </p>
+    <p style="margin-top:1.5rem; font-size:0.95rem; color:#ccc;">
+      Designed and created by <a href="http://www.igiraneza.unaux.com" target="_blank" style="color:#ccc; text-decoration:underline;">Fortune Igiraneza</a><br>
+      Contact: <a href="tel:+250795004563" style="color:#ccc;">0795004563</a>
+    </p>
+  </footer>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 80);
+    });
+  </script>
+
+</body>
+</html>
